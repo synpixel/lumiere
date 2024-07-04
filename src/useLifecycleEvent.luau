@@ -7,12 +7,12 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 
 	local lifecycleEvent = {}
 
-	function lifecycleEvent:withDesiredFramerate(framerate: number)
+	function lifecycleEvent:withDesiredFramerate(framerate)
 		throttle:setDuration(1 / framerate)
 		return lifecycleEvent
 	end
 
-	function lifecycleEvent:connect(callback: (deltaTime: number) -> ())
+	function lifecycleEvent:connect(callback)
 		local connection = rbxScriptSignal:Connect(function()
 			local deltaTime = throttle:getDeltaTime()
 			throttle:try(callback, deltaTime)
@@ -23,7 +23,7 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 		end
 	end
 
-	function lifecycleEvent:connectParallel(callback: (deltaTime: number) -> ())
+	function lifecycleEvent:connectParallel(callback)
 		local connection = rbxScriptSignal:ConnectParallel(function()
 			local deltaTime = throttle:getDeltaTime()
 			throttle:try(callback, deltaTime)
@@ -34,7 +34,7 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 		end
 	end
 
-	function lifecycleEvent:connectOnce(callback: (deltaTime: number) -> ())
+	function lifecycleEvent:connectOnce(callback)
 		local connection = rbxScriptSignal:Once(function()
 			local deltaTime = throttle:getDeltaTime()
 			throttle:try(callback, deltaTime)

@@ -10,11 +10,11 @@ local function createThrottle(): types.Throttle
 		return os.clock() - lastTick
 	end
 
-	function throttle:setDuration(duration: number)
+	function throttle:setDuration(duration)
 		throttleDuration = duration
 	end
 
-	function throttle:try<T...>(callback: (T...) -> (), ...: T...)
+	function throttle:try<T...>(callback, ...)
 		local deltaTime = throttle:getDeltaTime()
 		if deltaTime < throttleDuration then
 			return

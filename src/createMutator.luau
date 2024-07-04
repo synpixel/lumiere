@@ -6,25 +6,25 @@ local function createMutator(bullet: types.Bullet): types.Mutator
 	mutator.nextDirection = bullet.direction
 	mutator.nextDistanceTraveled = bullet.distanceTraveled
 
-	function mutator:setPosition(position: Vector3)
+	function mutator:setPosition(position)
 		local previousPosition = mutator.nextPosition
 		mutator.nextPosition = position
 		mutator.nextDistanceTraveled += (position - previousPosition).Magnitude
 	end
 
-	function mutator:setDirection(direction: Vector3)
+	function mutator:setDirection(direction)
 		mutator.nextDirection = direction
 	end
 
-	function mutator:incrementPosition(deltaPosition: Vector3)
+	function mutator:incrementPosition(deltaPosition)
 		mutator:setPosition(mutator.nextPosition + deltaPosition)
 	end
 
-	function mutator:incrementDirection(deltaDirection: Vector3)
+	function mutator:incrementDirection(deltaDirection)
 		mutator:setDirection(mutator.nextDirection + deltaDirection)
 	end
 
-	function mutator:raycastForward(raycastParams: RaycastParams?)
+	function mutator:raycastForward(raycastParams)
 		local raycastResult = workspace:Raycast(bullet.position, mutator.nextPosition - bullet.position, raycastParams)
 		return raycastResult
 	end

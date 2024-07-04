@@ -15,11 +15,11 @@ local function createSpawner(container: Instance, createBulletActor: () -> Actor
 	local spawner = {}
 	spawner.id = spawnerId
 
-	function spawner:findBulletFromId(bulletId: number)
+	function spawner:findBulletFromId(bulletId)
 		return bullets[bulletId]
 	end
 
-	function spawner:spawnBullet(origin: Vector3, direction: Vector3)
+	function spawner:spawnBullet(origin, direction)
 		currentBulletId += 1
 		local bulletId = currentBulletId
 
@@ -45,7 +45,7 @@ local function createSpawner(container: Instance, createBulletActor: () -> Actor
 		return bullets[bulletId]
 	end
 
-	function spawner:despawnBullet(bulletId: number)
+	function spawner:despawnBullet(bulletId)
 		if bulletActors[bulletId] ~= nil and bulletActors[bulletId].Parent ~= nil then
 			bulletActors[bulletId]:SetAttribute(constants.BULLET_DESPAWN_ATTRIBUTE, true)
 			bulletActors[bulletId]:Destroy()
