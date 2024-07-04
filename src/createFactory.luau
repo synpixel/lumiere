@@ -4,22 +4,22 @@ local constants = require(script.Parent.constants)
 local types = require(script.Parent.types)
 local useBulletDespawnSignal = require(script.Parent.useBulletDespawnSignal)
 
-local function createSpawner(container: Instance, bulletActor: Actor | () -> Actor): types.Spawner
-	local spawnerId = HttpService:GenerateGUID(false)
+local function createFactory(container: Instance, bulletActor: Actor | () -> Actor): types.Factory
+	local factoryId = HttpService:GenerateGUID(false)
 	local currentBulletId = 0
 	local bulletActors = {}
 
 	local bullets = SharedTable.new()
-	SharedTableRegistry:SetSharedTable(constants.SPAWNER_BULLETS_SHARED_TABLE_PATTERN:format(spawnerId), bullets)
+	SharedTableRegistry:SetSharedTable(constants.FACTORY_BULLETS_SHARED_TABLE_PATTERN:format(factoryId), bullets)
 
-	local spawner = {}
-	spawner.id = spawnerId
+	local factory = {}
+	factory.id = factoryId
 
-	function spawner:findBulletFromId(bulletId)
+	function factory:findBulletFromId(bulletId)
 		return bullets[bulletId]
 	end
 
-	function spawner:spawnBullet(origin, direction)
+	function factory:spawnBullet(origin, direction)
 		currentBulletId += 1
 		local bulletId = currentBulletId
 
@@ -32,11 +32,11 @@ local function createSpawner(container: Instance, bulletActor: Actor | () -> Act
 
 		local newBulletActor = if typeof(bulletActor) == "function" then bulletActor() else bulletActor:Clone()
 		newBulletActor.Name = `bullet_{bulletId}`
-		newBulletActor:SetAttribute(constants.SPAWNER_ID_ATTRIBUTE, spawnerId)
+		newBulletActor:SetAttribute(constants.FACTORY_ID_ATTRIBUTE, factoryId)
 		newBulletActor:SetAttribute(constants.BULLET_ID_ATTRIBUTE, bulletId)
 
 		useBulletDespawnSignal(newBulletActor):Connect(function()
-			spawner:despawnBullet(bulletId)
+			factory:despawnBullet(bulletId)
 		end)
 
 		newBulletActor.Parent = container
@@ -45,7 +45,7 @@ local function createSpawner(container: Instance, bulletActor: Actor | () -> Act
 		return bullets[bulletId]
 	end
 
-	function spawner:despawnBullet(bulletId)
+	function factory:despawnBullet(bulletId)
 		if bulletActors[bulletId] ~= nil and bulletActors[bulletId].Parent ~= nil then
 			bulletActors[bulletId]:SetAttribute(constants.BULLET_DESPAWN_ATTRIBUTE, true)
 			bulletActors[bulletId]:Destroy()
@@ -54,7 +54,7 @@ local function createSpawner(container: Instance, bulletActor: Actor | () -> Act
 		bullets[bulletId] = nil
 	end
 
-	return spawner
+	return factory
 end
 
-return createSpawner
+return createFactory
