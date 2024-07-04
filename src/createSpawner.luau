@@ -4,7 +4,7 @@ local constants = require(script.Parent.constants)
 local types = require(script.Parent.types)
 local useBulletDespawnSignal = require(script.Parent.useBulletDespawnSignal)
 
-local function createSpawner(container: Instance, createBulletActor: () -> Actor): types.Spawner
+local function createSpawner(container: Instance, bulletActor: Actor | () -> Actor): types.Spawner
 	local spawnerId = HttpService:GenerateGUID(false)
 	local currentBulletId = 0
 	local bulletActors = {}
@@ -30,7 +30,7 @@ local function createSpawner(container: Instance, createBulletActor: () -> Actor
 			distanceTraveled = 0,
 		}
 
-		local newBulletActor = createBulletActor()
+		local newBulletActor = if typeof(bulletActor) == "function" then bulletActor() else bulletActor:Clone()
 		newBulletActor.Name = `bullet_{bulletId}`
 		newBulletActor:SetAttribute(constants.SPAWNER_ID_ATTRIBUTE, spawnerId)
 		newBulletActor:SetAttribute(constants.BULLET_ID_ATTRIBUTE, bulletId)
