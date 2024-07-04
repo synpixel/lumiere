@@ -6,11 +6,11 @@
 ## Basic Usage
 
 ```lua
-local spawner = Lumiere.createSpawner(container, actor)
+local factory = Lumiere.createFactory(container, actor)
 
 local origin = Vector3.new(0, 15, 0)
 local direction = Vector3.new(0, 15, 0)
-spawner:spawnBullet(origin, direction)
+factory:spawnBullet(origin, direction)
 ```
 
 ```lua
