@@ -1,2 +1,0 @@
-# bolide
-parallel projectiles woah!
