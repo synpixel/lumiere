@@ -6,9 +6,7 @@
 ## Basic Usage
 
 ```lua
-local spawner = Lumiere.createSpawner(container, function()
-    return actor:Clone()
-end)
+local spawner = Lumiere.createSpawner(container, actor)
 
 local origin = Vector3.new(0, 15, 0)
 local direction = Vector3.new(0, 15, 0)
