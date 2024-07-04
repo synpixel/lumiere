@@ -1,0 +1,12 @@
+[package]
+name = "synpixel/lumiere"
+version = "0.1.0"
+license = "MIT"
+authors = ["synpixel"]
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+exclude = ["**"]
+include = ["src", "src/*", "default.project.json", "wally.lock", "wally.toml"]
+
+[dependencies]
