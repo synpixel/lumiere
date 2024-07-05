@@ -4,7 +4,7 @@ local constants = require(script.Parent.constants)
 local types = require(script.Parent.types)
 local useDeletingSignal = require(script.Parent.useDeletingSignal)
 
-local function createSource(container: Instance, bulletActor: Actor | () -> Actor): types.Source
+local function createSource(container: Instance, bulletActorTemplate: Actor | () -> Actor): types.Source
 	local sourceId = HttpService:GenerateGUID(false)
 	local currentBulletId = 0
 	local bulletActors = {}
@@ -30,18 +30,20 @@ local function createSource(container: Instance, bulletActor: Actor | () -> Acto
 			distanceTraveled = 0,
 		}
 
-		local newBulletActor = if typeof(bulletActor) == "function" then bulletActor() else bulletActor:Clone()
-		newBulletActor.Name = `bullet_{bulletId}`
-		newBulletActor:SetAttribute(constants.SOURCE_ID_ATTRIBUTE, sourceId)
-		newBulletActor:SetAttribute(constants.BULLET_ID_ATTRIBUTE, bulletId)
+		local bulletActor = if typeof(bulletActorTemplate) == "function"
+			then bulletActorTemplate()
+			else bulletActorTemplate:Clone()
+		bulletActor.Name = `bullet_{bulletId}`
+		bulletActor:SetAttribute(constants.SOURCE_ID_ATTRIBUTE, sourceId)
+		bulletActor:SetAttribute(constants.BULLET_ID_ATTRIBUTE, bulletId)
 
-		useDeletingSignal(newBulletActor):Connect(function()
+		useDeletingSignal(bulletActor):Connect(function()
 			source:deleteBullet(bulletId)
 		end)
 
-		newBulletActor.Parent = container
+		bulletActor.Parent = container
 
-		bulletActors[bulletId] = newBulletActor
+		bulletActors[bulletId] = bulletActor
 		return bullets[bulletId]
 	end
 
