@@ -12,6 +12,7 @@ local source = createSource(container, actor)
 
 local origin = Vector3.new(0, 15, 0)
 local direction = Vector3.new(0, 15, 0)
+
 source:makeBullet(origin, direction)
 ```
 
