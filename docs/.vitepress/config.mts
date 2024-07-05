@@ -27,6 +27,7 @@ export default defineConfig({
             { text: "Source", link: "/api/Source" },
             { text: "createMutator", link: "/api/createMutator" },
             { text: "Mutator", link: "/api/Mutator" },
+            { text: "Bullet", link: "/api/Bullet" },
           ],
         },
         {
