@@ -1,6 +1,7 @@
 local HttpService = game:GetService("HttpService")
 local SharedTableRegistry = game:GetService("SharedTableRegistry")
 local constants = require(script.Parent.constants)
+local deleteBullet = require(script.Parent.deleteBullet)
 local types = require(script.Parent.types)
 local useDeletingSignal = require(script.Parent.useDeletingSignal)
 
@@ -56,7 +57,7 @@ local function createSource(container: Instance, bulletActorTemplate: Actor | ()
 			return
 		end
 
-		bulletActor:SetAttribute(constants.BULLET_DELETE_ATTRIBUTE, true)
+		deleteBullet(bulletActor)
 	end
 
 	return source
