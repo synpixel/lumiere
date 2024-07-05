@@ -5,9 +5,6 @@ layout: home
 hero:
   name: "Lumiere"
   tagline: A projectile management library for parallel Luau
-  image:
-    src: /logo.svg
-    alt: Lumiere
   actions:
     - theme: brand
       text: Guides
