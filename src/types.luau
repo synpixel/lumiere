@@ -5,7 +5,7 @@ export type Scheduler = {
 }
 
 export type LifecycleEvent = {
-	withDesiredFramerate: (LifecycleEvent, framerate: number) -> LifecycleEvent,
+	withFixedFramerate: (LifecycleEvent, framerate: number) -> LifecycleEvent,
 	connect: (LifecycleEvent, callback: (deltaTime: number) -> ()) -> () -> (),
 	connectParallel: (LifecycleEvent, callback: (deltaTime: number) -> ()) -> () -> (),
 	connectOnce: (LifecycleEvent, callback: (deltaTime: number) -> ()) -> () -> (),

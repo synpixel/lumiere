@@ -7,7 +7,7 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 
 	local lifecycleEvent = {}
 
-	function lifecycleEvent:withDesiredFramerate(framerate)
+	function lifecycleEvent:withFixedFramerate(framerate)
 		scheduler:setInterval(1 / framerate)
 		return lifecycleEvent
 	end
