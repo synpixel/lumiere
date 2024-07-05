@@ -14,7 +14,7 @@ hero:
       link: /guides
     - theme: alt
       text: API Reference
-      link: /api/useLifecycleEvent
+      link: /api
 
 features:
   - title: Typechecked

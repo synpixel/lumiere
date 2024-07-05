@@ -13,13 +13,15 @@ export default defineConfig({
     nav: [
       { text: "Home", link: "/" },
       { text: "Guides", link: "/guides" },
-      { text: "API Reference", link: "/api/useLifecycleEvent" },
+      { text: "API Reference", link: "/api" },
     ],
 
     sidebar: {
       "/api/": [
+        { text: "Table of Contents", link: "/api" },
+
         {
-          text: "Reference",
+          text: "General",
           items: [
             { text: "useLifecycleEvent", link: "/api/useLifecycleEvent" },
             { text: "LifecycleEvent", link: "/api/LifecycleEvent" },
@@ -36,6 +38,16 @@ export default defineConfig({
             { text: "useBullet", link: "/api/useBullet" },
             { text: "deleteBullet", link: "/api/deleteBullet" },
             { text: "useDeletingSignal", link: "/api/useDeletingSignal" },
+          ],
+        },
+      ],
+
+      "/guides/": [
+        {
+          text: "Getting Started",
+          items: [
+            { text: "Installation", link: "/guides" },
+            { text: "Basic Usage", link: "/guides/basic-usage" },
           ],
         },
       ],
