@@ -5,9 +5,9 @@ local function isBulletActor(bulletActor: Actor): boolean
 		return false
 	end
 
-	local bulletFactoryId = bulletActor:GetAttribute(constants.FACTORY_ID_ATTRIBUTE)
+	local bulletSourceId = bulletActor:GetAttribute(constants.SOURCE_ID_ATTRIBUTE)
 	local bulletId = bulletActor:GetAttribute(constants.BULLET_ID_ATTRIBUTE)
-	return bulletFactoryId ~= nil and bulletId ~= nil
+	return bulletSourceId ~= nil and bulletId ~= nil
 end
 
 return isBulletActor

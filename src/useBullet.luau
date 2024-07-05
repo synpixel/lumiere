@@ -4,12 +4,12 @@ local types = require(script.Parent.types)
 local isBulletActor = require(script.Parent.util.isBulletActor)
 
 local function useBullet(bulletActor: Actor): types.Bullet
-	assert(isBulletActor(bulletActor), "useBullet expected actor made infactory")
+	assert(isBulletActor(bulletActor), "useBullet expected actor made in source")
 
-	local bulletFactoryId = bulletActor:GetAttribute(constants.FACTORY_ID_ATTRIBUTE)
+	local bulletSourceId = bulletActor:GetAttribute(constants.SOURCE_ID_ATTRIBUTE)
 	local bulletId = bulletActor:GetAttribute(constants.BULLET_ID_ATTRIBUTE)
 
-	local sharedTableName = constants.FACTORY_BULLETS_SHARED_TABLE_PATTERN:format(bulletFactoryId)
+	local sharedTableName = constants.SOURCE_BULLETS_SHARED_TABLE_PATTERN:format(bulletSourceId)
 	local bullets = SharedTableRegistry:GetSharedTable(sharedTableName)
 
 	return bullets[bulletId]
