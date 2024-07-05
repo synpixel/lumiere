@@ -1,7 +1,8 @@
 <div align="center">
-	<img src="docs/public/logo.svg" width="128" alt="Logo"/>
-	<h1>Lumiere</h1>
+    <img src="docs/public/logo.svg" width="128" alt="Logo"/>
+    <h1>Lumiere</h1>
     <p>A projectile management library for parallel Luau</p>
+    <a href="https://synpixel.github.io/lumiere/">Documentation →</a>
 </div>
 
 ## Basic Usage
