@@ -27,8 +27,8 @@ export type Mutator = {
 export type Source = {
 	id: string,
 	findBulletFromId: (Source, bulletId: number) -> Bullet?,
-	createBullet: (Source, origin: Vector3, direction: Vector3) -> Bullet,
-	removeBullet: (Source, bulletId: number) -> (),
+	makeBullet: (Source, origin: Vector3, direction: Vector3) -> Bullet,
+	deleteBullet: (Source, bulletId: number) -> (),
 }
 
 export type Bullet = {

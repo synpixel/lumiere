@@ -2,8 +2,8 @@ local useLifecycleEvent = require(script.useLifecycleEvent)
 local createMutator = require(script.createMutator)
 local createSource = require(script.createSource)
 local useBullet = require(script.useBullet)
-local removeBullet = require(script.removeBullet)
-local useRemovingSignal = require(script.useRemovingSignal)
+local deleteBullet = require(script.deleteBullet)
+local useDeletingSignal = require(script.useDeletingSignal)
 local types = require(script.types)
 
 export type LifecycleEvent = types.LifecycleEvent
@@ -17,6 +17,6 @@ return {
 	createSource = createSource,
 
 	useBullet = useBullet,
-	removeBullet = removeBullet,
-	useRemovingSignal = useRemovingSignal,
+	deleteBullet = deleteBullet,
+	useDeletingSignal = useDeletingSignal,
 }

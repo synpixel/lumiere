@@ -2,7 +2,7 @@ local HttpService = game:GetService("HttpService")
 local SharedTableRegistry = game:GetService("SharedTableRegistry")
 local constants = require(script.Parent.constants)
 local types = require(script.Parent.types)
-local useRemovingSignal = require(script.Parent.useRemovingSignal)
+local useDeletingSignal = require(script.Parent.useDeletingSignal)
 
 local function createSource(container: Instance, bulletActor: Actor | () -> Actor): types.Source
 	local sourceId = HttpService:GenerateGUID(false)
@@ -19,7 +19,7 @@ local function createSource(container: Instance, bulletActor: Actor | () -> Acto
 		return bullets[bulletId]
 	end
 
-	function source:createBullet(origin, direction)
+	function source:makeBullet(origin, direction)
 		currentBulletId += 1
 		local bulletId = currentBulletId
 
@@ -35,8 +35,8 @@ local function createSource(container: Instance, bulletActor: Actor | () -> Acto
 		newBulletActor:SetAttribute(constants.SOURCE_ID_ATTRIBUTE, sourceId)
 		newBulletActor:SetAttribute(constants.BULLET_ID_ATTRIBUTE, bulletId)
 
-		useRemovingSignal(newBulletActor):Connect(function()
-			source:removeBullet(bulletId)
+		useDeletingSignal(newBulletActor):Connect(function()
+			source:deleteBullet(bulletId)
 		end)
 
 		newBulletActor.Parent = container
@@ -45,9 +45,9 @@ local function createSource(container: Instance, bulletActor: Actor | () -> Acto
 		return bullets[bulletId]
 	end
 
-	function source:removeBullet(bulletId)
+	function source:deleteBullet(bulletId)
 		if bulletActors[bulletId] ~= nil and bulletActors[bulletId].Parent ~= nil then
-			bulletActors[bulletId]:SetAttribute(constants.BULLET_REMOVE_ATTRIBUTE, true)
+			bulletActors[bulletId]:SetAttribute(constants.BULLET_DELETE_ATTRIBUTE, true)
 			bulletActors[bulletId]:Destroy()
 			bulletActors[bulletId] = nil
 		end
