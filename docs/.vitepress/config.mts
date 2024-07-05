@@ -5,7 +5,7 @@ export default defineConfig({
   title: "Lumiere",
   description: "Documentation for Lumiere",
   base: "/lumiere/",
-  head: [["link", { rel: "icon", href: "/logo.svg" }]],
+  head: [["link", { rel: "icon", href: "/lumiere/logo.svg" }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: "/logo.svg",
