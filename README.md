@@ -7,7 +7,7 @@
 
 ## Basic Usage
 
-```lua
+```luau
 local factory = Lumiere.createFactory(container, actor)
 
 local origin = Vector3.new(0, 15, 0)
@@ -15,7 +15,7 @@ local direction = Vector3.new(0, 15, 0)
 factory:spawnBullet(origin, direction)
 ```
 
-```lua
+```luau
 local bullet = Lumiere.useBullet(actor)
 local mutator = Lumiere.createMutator(bullet)
 
