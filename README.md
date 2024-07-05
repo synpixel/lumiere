@@ -19,7 +19,7 @@ local bullet = Lumiere.useBullet(actor)
 local mutator = Lumiere.createMutator(bullet)
 
 Lumiere.useLifecycleEvent(RunService.PostSimulation)
-    :withDesiredFramerate(30)
+    :withFixedFramerate(30)
     :connectParallel(function(deltaTime)
         mutator:incrementPosition(bullet.direction * deltaTime)
 
