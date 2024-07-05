@@ -47,6 +47,13 @@ export default defineConfig({
           text: "Getting Started",
           items: [{ text: "Installation", link: "/guides" }],
         },
+        {
+          text: "Usage",
+          items: [
+            { text: "Scheduler", link: "/guides/scheduler" },
+            { text: "Bullets", link: "/guides/bullets" },
+          ],
+        },
       ],
     },
 
