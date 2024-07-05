@@ -20,7 +20,7 @@ The source's unique ID _(generated with `HttpService:GenerateGUID(false)`)_.
 Source:findBulletFromId(bulletId: number) -> Bullet?
 ```
 
-Returns a bullet inside the source with the given bullet id, or `nil`.
+Returns a bullet from the source with the given bullet id, or `nil`.
 
 ### makeBullet
 
@@ -28,7 +28,7 @@ Returns a bullet inside the source with the given bullet id, or `nil`.
 Source:makeBullet(origin: Vector3, direction: Vector3) -> Bullet
 ```
 
-Creates a new bullet inside the source, then returns it _(although `Bullet`s are mutable, I would advise against writing to them outside of the bullet actor)_.
+Makes a new bullet from the source, then returns it. _(although `Bullet`s are mutable, I would advise against writing to them outside of the bullet actor)_
 
 ### deleteBullet
 
