@@ -24,11 +24,11 @@ export type Mutator = {
 	flushMutations: (Mutator) -> (),
 }
 
-export type Factory = {
+export type Source = {
 	id: string,
-	findBulletFromId: (Factory, bulletId: number) -> Bullet?,
-	spawnBullet: (Factory, origin: Vector3, direction: Vector3) -> Bullet,
-	despawnBullet: (Factory, bulletId: number) -> (),
+	findBulletFromId: (Source, bulletId: number) -> Bullet?,
+	createBullet: (Source, origin: Vector3, direction: Vector3) -> Bullet,
+	removeBullet: (Source, bulletId: number) -> (),
 }
 
 export type Bullet = {
