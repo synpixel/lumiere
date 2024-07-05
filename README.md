@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="assets/lumiere-icon.svg" width="128" alt="Logo"/>
+	<img src="docs/public/logo.svg" width="128" alt="Logo"/>
 	<h1>Lumiere</h1>
     <p>A projectile management library for parallel Luau</p>
 </div>
