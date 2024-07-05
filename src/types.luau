@@ -1,11 +1,11 @@
-export type Throttle = {
-	getDeltaTime: (Throttle) -> number,
-	setDuration: (Throttle, duration: number) -> (),
-	try: <T...>(Throttle, callback: (T...) -> (), T...) -> (),
+export type Scheduler = {
+	getDeltaTime: (Scheduler) -> number,
+	setInterval: (Scheduler, interval: number) -> (),
+	update: <T...>(Scheduler, deltaTime: number, callback: (T...) -> (), T...) -> (),
 }
 
 export type LifecycleEvent = {
-	withDesiredFramerate: (LifecycleEvent, framerate: number) -> LifecycleEvent,
+	withFixedFramerate: (LifecycleEvent, framerate: number) -> LifecycleEvent,
 	connect: (LifecycleEvent, callback: (deltaTime: number) -> ()) -> () -> (),
 	connectParallel: (LifecycleEvent, callback: (deltaTime: number) -> ()) -> () -> (),
 	connectOnce: (LifecycleEvent, callback: (deltaTime: number) -> ()) -> () -> (),
