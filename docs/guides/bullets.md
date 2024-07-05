@@ -108,4 +108,4 @@ for _, bullet in source:getBullets() do
 end
 ```
 
-We've gone through everything you need to know to get started, but if this is not enough, you can take a peek at the [API Reference](../api)!
+We've gone through everything you need to know to get started, but if this is not enough, you can take a peek at the [API Reference](../api/index)!
