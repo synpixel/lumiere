@@ -26,6 +26,7 @@ export type Mutator = {
 
 export type Source = {
 	id: string,
+	getBullets: (Source) -> SharedTable,
 	findBulletFromId: (Source, bulletId: number) -> Bullet?,
 	makeBullet: (Source, origin: Vector3, direction: Vector3) -> Bullet,
 	deleteBullet: (Source, bulletId: number) -> (),
