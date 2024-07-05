@@ -22,7 +22,7 @@ Source:findBulletFromId(bulletId: number) -> Bullet?
 
 Returns a bullet inside the source with the given bullet id, or `nil`.
 
-### createBullet
+### makeBullet
 
 ```luau
 Source:makeBullet(origin: Vector3, direction: Vector3) -> Bullet
