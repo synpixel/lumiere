@@ -19,7 +19,7 @@ export default defineConfig({
     sidebar: {
       "/api/": [
         {
-          text: "General",
+          text: "Reference",
           items: [
             { text: "useLifecycleEvent", link: "/api/useLifecycleEvent" },
             { text: "LifecycleEvent", link: "/api/LifecycleEvent" },
@@ -30,7 +30,7 @@ export default defineConfig({
           ],
         },
         {
-          text: "Actors",
+          text: "Parallel",
           items: [
             { text: "useBullet", link: "/api/useBullet" },
             { text: "despawnBullet", link: "/api/despawnBullet" },
