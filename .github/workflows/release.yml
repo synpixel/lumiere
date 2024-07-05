@@ -1,0 +1,23 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ok-nick/setup-aftman@v0.4.2
+      - run: rojo sourcemap default.project.json --output sourcemap.json
+      - run: rojo build --output "$(cat ./wally.toml | grep -oP 'name = \".*/\K.*(?=\")').rbxm"
+      - run: echo "VERSION=v$(cat wally.toml | grep -Po 'version = "\K[0-9.]*(?=")')" >> "$GITHUB_ENV"
+      - run: echo "ARTIFACTS=$(cat ./wally.toml | grep -oP 'name = \".*/\K.*(?=\")').rbxm" >> "$GITHUB_ENV"
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: ${{ env.ARTIFACTS }}
+          tag: ${{ env.VERSION }}
