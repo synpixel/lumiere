@@ -14,8 +14,7 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 
 	function lifecycleEvent:connect(callback)
 		local connection = rbxScriptSignal:Connect(function(deltaTime)
-			local fakeDeltaTime = scheduler:getDeltaTime()
-			scheduler:update(deltaTime, callback, fakeDeltaTime)
+			scheduler:update(deltaTime, callback)
 		end)
 
 		return function()
@@ -25,8 +24,7 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 
 	function lifecycleEvent:connectParallel(callback)
 		local connection = rbxScriptSignal:ConnectParallel(function(deltaTime)
-			local fakeDeltaTime = scheduler:getDeltaTime()
-			scheduler:update(deltaTime, callback, fakeDeltaTime)
+			scheduler:update(deltaTime, callback)
 		end)
 
 		return function()
@@ -36,8 +34,7 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 
 	function lifecycleEvent:connectOnce(callback)
 		local connection = rbxScriptSignal:Once(function(deltaTime)
-			local fakeDeltaTime = scheduler:getDeltaTime()
-			scheduler:update(deltaTime, callback, fakeDeltaTime)
+			scheduler:update(deltaTime, callback)
 		end)
 
 		return function()

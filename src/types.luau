@@ -1,7 +1,7 @@
 export type Scheduler = {
-	getDeltaTime: (Scheduler) -> number,
+	interval: number,
 	setInterval: (Scheduler, interval: number) -> (),
-	update: <T...>(Scheduler, deltaTime: number, callback: (T...) -> (), T...) -> (),
+	update: (Scheduler, deltaTime: number, callback: (deltaTime: number) -> ()) -> (),
 }
 
 export type LifecycleEvent = {
