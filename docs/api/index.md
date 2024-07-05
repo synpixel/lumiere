@@ -2,16 +2,16 @@
 
 ## General
 
-- [useLifecycleEvent](/api/useLifecycleEvent)
-- [LifecycleEvent](/api/LifecycleEvent)
-- [createSource](/api/createSource)
-- [Source](/api/Source)
-- [createMutator](/api/createMutator)
-- [Mutator](/api/Mutator)
-- [Bullet](/api/Bullet)
+- [useLifecycleEvent](./useLifecycleEvent)
+- [LifecycleEvent](./LifecycleEvent)
+- [createSource](./createSource)
+- [Source](./Source)
+- [createMutator](./createMutator)
+- [Mutator](./Mutator)
+- [Bullet](./Bullet)
 
 ## Parallel
 
-- [useBullet](/api/useBullet)
-- [deleteBullet](/api/deleteBullet)
-- [useDeletingSignal](/api/useDeletingSignal)
+- [useBullet](./useBullet)
+- [deleteBullet](./deleteBullet)
+- [useDeletingSignal](./useDeletingSignal)

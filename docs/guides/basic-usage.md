@@ -92,4 +92,4 @@ source:deleteBullet(bullet.id)
 
 ## Conclusion
 
-The basic usage section is finished, but you can learn more about Lumiere's API [here](/api).
+The basic usage section is finished, but you can learn more about Lumiere's API [here](../api/index).
