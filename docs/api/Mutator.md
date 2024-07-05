@@ -76,4 +76,4 @@ Casts a ray from `Bullet.position` to `Mutator.nextPosition` and returns the res
 Mutator:flushMutations() -> ()
 ```
 
-Applies the mutations to `bullet`.
+Applies the mutations to `Bullet`.
