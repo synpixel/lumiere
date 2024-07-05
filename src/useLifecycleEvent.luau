@@ -1,21 +1,21 @@
 local types = require(script.Parent.types)
-local createScheduler = require(script.Parent.util.createScheduler)
+local createThrottle = require(script.Parent.util.createThrottle)
 
 local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.LifecycleEvent
-	local scheduler = createScheduler()
-	scheduler:setInterval(0)
+	local throttle = createThrottle()
+	throttle:setDuration(0)
 
 	local lifecycleEvent = {}
 
-	function lifecycleEvent:withFixedFramerate(framerate)
-		scheduler:setInterval(1 / framerate)
+	function lifecycleEvent:withDesiredFramerate(framerate)
+		throttle:setDuration(1 / framerate)
 		return lifecycleEvent
 	end
 
 	function lifecycleEvent:connect(callback)
-		local connection = rbxScriptSignal:Connect(function(deltaTime)
-			local fakeDeltaTime = scheduler:getDeltaTime()
-			scheduler:update(deltaTime, callback, fakeDeltaTime)
+		local connection = rbxScriptSignal:Connect(function()
+			local deltaTime = throttle:getDeltaTime()
+			throttle:try(callback, deltaTime)
 		end)
 
 		return function()
@@ -24,9 +24,9 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 	end
 
 	function lifecycleEvent:connectParallel(callback)
-		local connection = rbxScriptSignal:ConnectParallel(function(deltaTime)
-			local fakeDeltaTime = scheduler:getDeltaTime()
-			scheduler:update(deltaTime, callback, fakeDeltaTime)
+		local connection = rbxScriptSignal:ConnectParallel(function()
+			local deltaTime = throttle:getDeltaTime()
+			throttle:try(callback, deltaTime)
 		end)
 
 		return function()
@@ -35,9 +35,9 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 	end
 
 	function lifecycleEvent:connectOnce(callback)
-		local connection = rbxScriptSignal:Once(function(deltaTime)
-			local fakeDeltaTime = scheduler:getDeltaTime()
-			scheduler:update(deltaTime, callback, fakeDeltaTime)
+		local connection = rbxScriptSignal:Once(function()
+			local deltaTime = throttle:getDeltaTime()
+			throttle:try(callback, deltaTime)
 		end)
 
 		return function()
