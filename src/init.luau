@@ -3,7 +3,7 @@ local createMutator = require(script.createMutator)
 local createFactory = require(script.createFactory)
 local useBullet = require(script.useBullet)
 local despawnBullet = require(script.despawnBullet)
-local useBulletDespawnSignal = require(script.useBulletDespawnSignal)
+local useDespawningSignal = require(script.useDespawningSignal)
 local types = require(script.types)
 
 export type LifecycleEvent = types.LifecycleEvent
@@ -18,5 +18,5 @@ return {
 
 	useBullet = useBullet,
 	despawnBullet = despawnBullet,
-	useBulletDespawnSignal = useBulletDespawnSignal,
+	useDespawningSignal = useDespawningSignal,
 }

@@ -2,7 +2,7 @@ local HttpService = game:GetService("HttpService")
 local SharedTableRegistry = game:GetService("SharedTableRegistry")
 local constants = require(script.Parent.constants)
 local types = require(script.Parent.types)
-local useBulletDespawnSignal = require(script.Parent.useBulletDespawnSignal)
+local useDespawningSignal = require(script.Parent.useDespawningSignal)
 
 local function createFactory(container: Instance, bulletActor: Actor | () -> Actor): types.Factory
 	local factoryId = HttpService:GenerateGUID(false)
@@ -35,7 +35,7 @@ local function createFactory(container: Instance, bulletActor: Actor | () -> Act
 		newBulletActor:SetAttribute(constants.FACTORY_ID_ATTRIBUTE, factoryId)
 		newBulletActor:SetAttribute(constants.BULLET_ID_ATTRIBUTE, bulletId)
 
-		useBulletDespawnSignal(newBulletActor):Connect(function()
+		useDespawningSignal(newBulletActor):Connect(function()
 			factory:despawnBullet(bulletId)
 		end)
 
