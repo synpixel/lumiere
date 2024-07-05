@@ -20,7 +20,6 @@ export default defineConfig({
     sidebar: {
       "/api/": [
         { text: "Table of Contents", link: "/api" },
-
         {
           text: "General",
           items: [
