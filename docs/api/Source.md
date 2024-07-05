@@ -28,7 +28,11 @@ Returns a bullet from the source with the given bullet id, or `nil`.
 Source:makeBullet(origin: Vector3, direction: Vector3) -> Bullet
 ```
 
-Makes a new bullet from the source, then returns it. _(although `Bullet`s are mutable, I would advise against writing to them outside of the bullet actor)_
+Makes a new bullet from the source, then returns it.
+
+::: tip
+Although `Bullet`s are mutable, I would advise against writing to them outside of their actor.
+:::
 
 ### deleteBullet
 
