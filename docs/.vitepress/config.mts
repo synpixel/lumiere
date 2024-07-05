@@ -45,10 +45,7 @@ export default defineConfig({
       "/guides/": [
         {
           text: "Getting Started",
-          items: [
-            { text: "Installation", link: "/guides" },
-            { text: "Basic Usage", link: "/guides/basic-usage" },
-          ],
+          items: [{ text: "Installation", link: "/guides" }],
         },
       ],
     },
