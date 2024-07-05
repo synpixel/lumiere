@@ -1,21 +1,21 @@
 local types = require(script.Parent.types)
-local createThrottle = require(script.Parent.util.createThrottle)
+local createScheduler = require(script.Parent.util.createScheduler)
 
 local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.LifecycleEvent
-	local throttle = createThrottle()
-	throttle:setDuration(0)
+	local scheduler = createScheduler()
+	scheduler:setInterval(0)
 
 	local lifecycleEvent = {}
 
 	function lifecycleEvent:withDesiredFramerate(framerate)
-		throttle:setDuration(1 / framerate)
+		scheduler:setInterval(1 / framerate)
 		return lifecycleEvent
 	end
 
 	function lifecycleEvent:connect(callback)
-		local connection = rbxScriptSignal:Connect(function()
-			local deltaTime = throttle:getDeltaTime()
-			throttle:try(callback, deltaTime)
+		local connection = rbxScriptSignal:Connect(function(deltaTime)
+			local fakeDeltaTime = scheduler:getDeltaTime()
+			scheduler:update(deltaTime, callback, fakeDeltaTime)
 		end)
 
 		return function()
@@ -24,9 +24,9 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 	end
 
 	function lifecycleEvent:connectParallel(callback)
-		local connection = rbxScriptSignal:ConnectParallel(function()
-			local deltaTime = throttle:getDeltaTime()
-			throttle:try(callback, deltaTime)
+		local connection = rbxScriptSignal:ConnectParallel(function(deltaTime)
+			local fakeDeltaTime = scheduler:getDeltaTime()
+			scheduler:update(deltaTime, callback, fakeDeltaTime)
 		end)
 
 		return function()
@@ -35,9 +35,9 @@ local function useLifecycleEvent(rbxScriptSignal: RBXScriptSignal): types.Lifecy
 	end
 
 	function lifecycleEvent:connectOnce(callback)
-		local connection = rbxScriptSignal:Once(function()
-			local deltaTime = throttle:getDeltaTime()
-			throttle:try(callback, deltaTime)
+		local connection = rbxScriptSignal:Once(function(deltaTime)
+			local fakeDeltaTime = scheduler:getDeltaTime()
+			scheduler:update(deltaTime, callback, fakeDeltaTime)
 		end)
 
 		return function()

@@ -1,7 +1,7 @@
-export type Throttle = {
-	getDeltaTime: (Throttle) -> number,
-	setDuration: (Throttle, duration: number) -> (),
-	try: <T...>(Throttle, callback: (T...) -> (), T...) -> (),
+export type Scheduler = {
+	getDeltaTime: (Scheduler) -> number,
+	setInterval: (Scheduler, interval: number) -> (),
+	update: <T...>(Scheduler, deltaTime: number, callback: (T...) -> (), T...) -> (),
 }
 
 export type LifecycleEvent = {
