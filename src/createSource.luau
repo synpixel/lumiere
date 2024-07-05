@@ -33,27 +33,30 @@ local function createSource(container: Instance, bulletActorTemplate: Actor | ()
 		local bulletActor = if typeof(bulletActorTemplate) == "function"
 			then bulletActorTemplate()
 			else bulletActorTemplate:Clone()
+
 		bulletActor.Name = `bullet_{bulletId}`
 		bulletActor:SetAttribute(constants.SOURCE_ID_ATTRIBUTE, sourceId)
 		bulletActor:SetAttribute(constants.BULLET_ID_ATTRIBUTE, bulletId)
 
 		useDeletingSignal(bulletActor):Connect(function()
-			source:deleteBullet(bulletId)
+			bulletActor:Destroy()
+			bulletActors[bulletId] = nil
+			bullets[bulletId] = nil
 		end)
 
+		bulletActors[bulletId] = bulletActor
 		bulletActor.Parent = container
 
-		bulletActors[bulletId] = bulletActor
 		return bullets[bulletId]
 	end
 
 	function source:deleteBullet(bulletId)
-		if bulletActors[bulletId] ~= nil and bulletActors[bulletId].Parent ~= nil then
-			bulletActors[bulletId]:SetAttribute(constants.BULLET_DELETE_ATTRIBUTE, true)
-			bulletActors[bulletId]:Destroy()
-			bulletActors[bulletId] = nil
+		local bulletActor = bulletActors[bulletId]
+		if bulletActor == nil or not bulletActor:IsDescendantOf(game) then
+			return
 		end
-		bullets[bulletId] = nil
+
+		bulletActor:SetAttribute(constants.BULLET_DELETE_ATTRIBUTE, true)
 	end
 
 	return source
