@@ -33,8 +33,8 @@ export default defineConfig({
           text: "Parallel",
           items: [
             { text: "useBullet", link: "/api/useBullet" },
-            { text: "removeBullet", link: "/api/removeBullet" },
-            { text: "useRemovingSignal", link: "/api/useRemovingSignal" },
+            { text: "deleteBullet", link: "/api/deleteBullet" },
+            { text: "useDeletingSignal", link: "/api/useDeletingSignal" },
           ],
         },
       ],

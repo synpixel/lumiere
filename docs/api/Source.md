@@ -25,15 +25,15 @@ Returns a bullet inside the source with the given bullet id, or `nil`.
 ### createBullet
 
 ```luau
-Source:createBullet(origin: Vector3, direction: Vector3) -> Bullet
+Source:makeBullet(origin: Vector3, direction: Vector3) -> Bullet
 ```
 
-Creates a new bullet inside the source, then returns it.
+Creates a new bullet inside the source, then returns it _(although `Bullet`s are mutable, I would advise against writing to them outside of the bullet actor)_.
 
-### removeBullet
+### deleteBullet
 
 ```luau
-Source:removeBullet(bulletId: number) -> ()
+Source:deleteBullet(bulletId: number) -> ()
 ```
 
-Removes a bullet with the given bullet id.
+Deletes the bullet associated with the given bullet id.
