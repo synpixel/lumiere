@@ -14,6 +14,14 @@ The source's unique ID _(generated with `HttpService:GenerateGUID(false)`)_.
 
 ## Methods
 
+### getBullets
+
+```luau
+Source:getBullets() -> SharedTable<number, Bullet>
+```
+
+Returns a SharedTable with `Bullet` IDs as keys and `Bullet`s as values.
+
 ### findBulletFromId
 
 ```luau

@@ -16,6 +16,10 @@ local function createSource(container: Instance, bulletActorTemplate: Actor | ()
 	local source = {}
 	source.id = sourceId
 
+	function source:getBullets()
+		return bullets
+	end
+
 	function source:findBulletFromId(bulletId)
 		return bullets[bulletId]
 	end
