@@ -8,11 +8,11 @@
 ## Basic Usage
 
 ```luau
-local factory = createFactory(container, actor)
+local source = createSource(container, actor)
 
 local origin = Vector3.new(0, 15, 0)
 local direction = Vector3.new(0, 15, 0)
-factory:spawnBullet(origin, direction)
+source:createBullet(origin, direction)
 ```
 
 ```luau

@@ -7,5 +7,5 @@ useBullet(bulletActor: Actor) -> Bullet?
 ```
 
 ::: warning
-useBullet will throw if `bulletActor` was not created by a `Factory`.
+useBullet will throw if `bulletActor` was not created by a `Source`.
 :::

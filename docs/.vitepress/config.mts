@@ -23,8 +23,8 @@ export default defineConfig({
           items: [
             { text: "useLifecycleEvent", link: "/api/useLifecycleEvent" },
             { text: "LifecycleEvent", link: "/api/LifecycleEvent" },
-            { text: "createFactory", link: "/api/createFactory" },
-            { text: "Factory", link: "/api/Factory" },
+            { text: "createSource", link: "/api/createSource" },
+            { text: "Source", link: "/api/Source" },
             { text: "createMutator", link: "/api/createMutator" },
             { text: "Mutator", link: "/api/Mutator" },
           ],
@@ -33,8 +33,8 @@ export default defineConfig({
           text: "Parallel",
           items: [
             { text: "useBullet", link: "/api/useBullet" },
-            { text: "despawnBullet", link: "/api/despawnBullet" },
-            { text: "useDespawningSignal", link: "/api/useDespawningSignal" },
+            { text: "removeBullet", link: "/api/removeBullet" },
+            { text: "useRemovingSignal", link: "/api/useRemovingSignal" },
           ],
         },
       ],
