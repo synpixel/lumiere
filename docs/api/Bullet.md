@@ -42,4 +42,12 @@ The total distance the bullet has traveled.
 This property is set automatically when using a `Mutator`.
 :::
 
+### information
+
+```luau
+Bullet.information: any?
+```
+
+Extra information about the bullet. This is first set by `Source:makeBullet`.
+
 ## Methods
