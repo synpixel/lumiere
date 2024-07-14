@@ -1,6 +1,6 @@
 # Bullet
 
-::: tip
+::: info
 Although `Bullet`s are mutable, I would advise against writing to them outside of their actor.
 :::
 

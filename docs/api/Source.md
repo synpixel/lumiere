@@ -33,13 +33,17 @@ Returns a bullet from the source with the given bullet id, or `nil`.
 ### makeBullet
 
 ```luau
-Source:makeBullet(origin: Vector3, direction: Vector3) -> Bullet
+Source:makeBullet(origin: Vector3, direction: Vector3, information: any?) -> Bullet
 ```
 
 Makes a new bullet from the source, then returns it.
 
-::: tip
+::: info
 Although `Bullet`s are mutable, I would advise against writing to them outside of their actor.
+:::
+
+::: danger
+This method will throw if `information` can not be stored in a SharedTable. _(ex: `Instance`)_
 :::
 
 ### deleteBullet
