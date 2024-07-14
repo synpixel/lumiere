@@ -12,7 +12,7 @@
 Lumiere is up on Wally. Simply add this to your `wally.toml` file:
 
 ```toml
-Lumiere = "synpixel/lumiere@0.1.2"
+Lumiere = "synpixel/lumiere@0.1.3"
 ```
 
 ### Roblox Studio
