@@ -6,6 +6,6 @@ Returns the bullet associated with the given bullet actor.
 useBullet(bulletActor: Actor) -> Bullet?
 ```
 
-::: warning
+::: danger
 useBullet will throw if `bulletActor` was not made by a `Source`.
 :::

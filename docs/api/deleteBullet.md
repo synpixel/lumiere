@@ -6,6 +6,6 @@ Deletes the bullet associated with the given bullet actor.
 deleteBullet(bulletActor: Actor) -> ()
 ```
 
-::: warning
+::: danger
 deleteBullet will throw if `bulletActor` was not made by a `Source`.
 :::

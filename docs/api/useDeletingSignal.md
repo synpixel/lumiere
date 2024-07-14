@@ -6,6 +6,6 @@ Returns a signal which fires when the bullet associated with the given bullet ac
 useDeletingSignal(bulletActor: Actor) -> RBXScriptSignal
 ```
 
-::: warning
+::: danger
 useDeletingSignal will throw if `bulletActor` was not made by a `Source`.
 :::
