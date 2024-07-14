@@ -24,7 +24,7 @@ local function createSource(container: Instance, bulletActorTemplate: Actor | ()
 		return bullets[bulletId]
 	end
 
-	function source:makeBullet(origin, direction)
+	function source:makeBullet(origin, direction, information)
 		currentBulletId += 1
 		local bulletId = currentBulletId
 
@@ -33,6 +33,7 @@ local function createSource(container: Instance, bulletActorTemplate: Actor | ()
 			position = origin,
 			direction = direction,
 			distanceTraveled = 0,
+			information = information,
 		}
 
 		local bulletActor = if typeof(bulletActorTemplate) == "function"

@@ -28,7 +28,7 @@ export type Source = {
 	id: string,
 	getBullets: (Source) -> SharedTable,
 	findBulletFromId: (Source, bulletId: number) -> Bullet?,
-	makeBullet: (Source, origin: Vector3, direction: Vector3) -> Bullet,
+	makeBullet: (Source, origin: Vector3, direction: Vector3, information: any?) -> Bullet,
 	deleteBullet: (Source, bulletId: number) -> (),
 }
 
@@ -37,6 +37,7 @@ export type Bullet = {
 	position: Vector3,
 	direction: Vector3,
 	distanceTraveled: number,
+	information: any?,
 }
 
 return nil
