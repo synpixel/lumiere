@@ -25,7 +25,7 @@ useLifecycleEvent(RunService.PostSimulation)
 
 ##
 
-:::info
+::: info
 Low frames? Lumiere's got you covered. `LifecycleEvent` compensates for low framerate by running the callback as many times as it needs.
 :::
 

@@ -38,7 +38,7 @@ Bullet.distanceTraveled: number
 
 The total distance the bullet has traveled.
 
-:::info
+::: info
 This property is set automatically when using a `Mutator`.
 :::
 
